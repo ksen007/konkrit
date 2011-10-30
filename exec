@@ -1,0 +1,1 @@
+java -classpath /Users/ksen/Dropbox/konkrit/lib/jline-1.0.jar:/Users/ksen/Dropbox/konkrit/lib/bsh-2.0b4.jar:/Users/ksen/Dropbox/konkrit/out/production/konkrit/  edu.berkeley.cs.konkrit.core.Commands
