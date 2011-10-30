@@ -1,0 +1,15 @@
+!declare void @loop(int i);
+!test test1
+int i = 0;
+!watch i
+@loop(i);
+since i < 4;
+System.out.println(i);
+@loop(i+1);
+!cont
+!print
+return;
+!cont
+Assert.check(i==4);
+return;
+!all

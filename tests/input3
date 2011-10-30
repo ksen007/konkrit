@@ -1,0 +1,48 @@
+!test test1
+TList head = new TList(1);
+!watch head
+head.next = new TList(2);
+head.next.next = new TList(3);
+!declare TList reverse(TList list);
+!watch list
+head = reverse(head);
+!watch list.next
+!watch list.next.next
+!watch list.next.next.next
+since list != null;
+since list.next != null;
+TList tmp = list.next;
+TList tmp2;
+tmp2 = reverse(tmp);
+!print
+!cont
+return list;
+!cont
+!print
+!watch tmp2
+!watch tmp
+tmp.next = list;
+list.next = null;
+!print
+return tmp2;
+!cont
+!print
+!watch head.next
+!watch head.next.next
+!watch head.next.next.next
+Assert.check(head.value==3);
+Assert.check(head.next.value==2);
+Assert.check(head.next.next.value==1);
+Assert.check(head.next.next.next==null);
+return;
+!all
+!test test2
+TList head = null;
+head = reverse(head);
+!print
+!cont
+return list;
+!print
+Assert.check(head==null);
+return;
+!all

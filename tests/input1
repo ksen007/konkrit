@@ -1,0 +1,28 @@
+!declare int gcd (int x, int y);
+!test test1
+int ret;
+!watch x
+!watch y
+!watch ret
+ret = gcd(12, 8);
+int ret;
+since x > 0;
+since x > y;
+ret = gcd(y, x);
+!print
+!cont
+ret = gcd(x, y - x);
+!cont
+return y;
+return ret;
+return ret;
+!cont
+Assert.check(ret==4);
+return;
+!test test2
+int ret;
+ret = gcd(25, 40);
+!cont
+Assert.check(ret==5);
+return;
+!all

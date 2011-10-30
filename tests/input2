@@ -1,0 +1,127 @@
+!declare void sort(int[] a, int start, int end);
+!declare void swap(int[] a, int i, int j);
+!declare int partition(int[] a, int start, int end, int pivot);
+!declare int findless(int[] a, int start, int end, int pivot);
+!test test1
+int[] a = {3, 2, 9, 1, 0};
+swap(a,2,4);
+int tmp = a[i];
+a[i] = a[j];
+a[j] = tmp;
+!watch a[0]
+!watch a[1]
+!watch a[2]
+!watch a[3]
+!watch a[4]
+return;
+Assert.check(a[2]==0);
+Assert.check(a[4]==9);
+return;
+!test test2
+int[] a = {3, 2, 9, 1, 0};
+int ret;
+ret = findless(a,0,4,2);
+since start <= end;
+since a[start] >= pivot;
+int ret;
+ret = findless(a,start+1,end,pivot);
+!cont
+return start;
+!cont
+return ret;
+!cont
+Assert.check(ret==3);
+return;
+!test test3
+int[] a = {3, 2, 9, 1, 0};
+int ret;
+ret = findless(a,0,4,0);
+!cont
+return -1;
+!cont
+Assert.check(ret==-1);
+return;
+!all
+!list
+!test test4
+int[] a = {3, 2, 9, 1, 0};
+int ret;
+ret = partition(a,0,4,3);
+since start < end - 1;
+since a[start] >= pivot;
+int less;
+less = findless(a,start+1,end,pivot);
+!cont
+since less != -1;
+swap(a,start,less);
+!cont
+less = partition(a,start+1,end,pivot);
+!cont
+!rerun 55
+!replace since start < end;
+!rerun
+return start;
+!rerun
+return less;
+!rerun
+Assert.check(ret==3);
+return;
+!all
+!test test5
+int[] a = {3, 2, 9, 1, 0};
+int ret;
+ret = partition(a,0,4,0);
+!cont
+Assert.check(ret==0);
+return;
+!all
+!test test4
+!next
+!next
+!test test6
+int[] a = {3, 2, 9, 1, 0};
+sort(a,0,4);
+since start < end;
+int pivot = a[start];
+swap(a,start,end);
+!cont
+int mid;
+mid = partition(a,start,end,pivot);
+!cont
+int ret;
+ret = partition(a,start+1,end,pivot);
+!cont
+return ret;
+!cont
+swap(a,mid,end);
+!cont
+sort(a,start,mid-1);
+!cont
+return;
+!cont
+sort(a,mid+1,end);
+!cont
+return start;
+!cont
+return;
+!cont
+Assert.check(a[0]==0);
+Assert.check(a[1]==1);
+Assert.check(a[2]==2);
+Assert.check(a[3]==3);
+Assert.check(a[4]==9);
+return;
+!test test7
+int[] b = {8, 3, 2, 4, 0, 12, -1};
+!sort(b,0,b.length-1);
+sort(b,0,b.length-1);
+!cont
+Assert.check(b[0]==-1);
+Assert.check(b[1]==0);
+Assert.check(b[2]==2);
+Assert.check(b[3]==3);
+Assert.check(b[4]==4);
+Assert.check(b[5]==8);
+Assert.check(b[6]==12);
+return;
+!all

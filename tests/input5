@@ -1,0 +1,25 @@
+!test test1
+!declare int foo(String x);
+int ret;
+ret = foo("hello");
+!mock mock1
+return 5;
+return;
+!all
+!test test2
+int ret;
+ret = foo("xyz");
+!mock mock1
+!next
+!insert Assert.check(ret==5);
+return;
+!all
+!test test1
+!next
+!step
+!mock
+!step
+return 7;
+!insert Assert.check(ret==7);
+!cont
+!all
