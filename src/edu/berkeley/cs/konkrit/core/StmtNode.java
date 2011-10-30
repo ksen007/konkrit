@@ -1,4 +1,4 @@
-package edu.berkeley.cs.tedd.core;
+package edu.berkeley.cs.konkrit.core;
 
 import bsh.EvalError;
 import bsh.Interpreter;

@@ -1,4 +1,4 @@
-package edu.berkeley.cs.tedd.core;
+package edu.berkeley.cs.konkrit.core;
 
 import bsh.*;
 
@@ -38,8 +38,8 @@ import java.util.*;
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 public class CodingEngine implements Serializable {
-    private static final String globalFunctionNameVarName = "__tedd_functionName";
-    private static final String globalArgumentsVarName = "__tedd_arguments";
+    private static final String globalFunctionNameVarName = "__konkrit_functionName";
+    private static final String globalArgumentsVarName = "__konkrit_arguments";
 
     public static String formatFixedWidth(long value, int width) {
         String ret = value+"";
@@ -134,7 +134,7 @@ public class CodingEngine implements Serializable {
 
         Object[] arguments = (Object[]) currentInterpreter.get(globalArgumentsVarName);
         fun.setArguments(currentInterpreter,callStack.getNameSpace(),arguments);
-        currentInterpreter.eval("global.__tedd_functionName = null;");
+        currentInterpreter.eval("global.__konkrit_functionName = null;");
 
 
         return true;
@@ -411,7 +411,7 @@ public class CodingEngine implements Serializable {
 
     public void dump(String filename) throws IOException {
         ObjectOutputStream out;
-        out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(filename+".tedd")));
+        out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(filename+".konkrit")));
         out.writeObject(this);
         out.close();
     }

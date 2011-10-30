@@ -1,4 +1,4 @@
-package edu.berkeley.cs.tedd.core;
+package edu.berkeley.cs.konkrit.core;
 
 import bsh.EvalError;
 import bsh.UtilEvalError;
@@ -173,7 +173,7 @@ public class Commands {
 
     @Command("file-name: Open the file \"file-name\" as the current program.")
     public void open(String arg) throws IOException, ClassNotFoundException {
-        ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(arg+".tedd")));
+        ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(arg+".konkrit")));
         ce = (CodingEngine) in.readObject();
         ce.setCurrentClass(arg);
         System.out.println("Loaded class "+arg);

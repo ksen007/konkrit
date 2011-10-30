@@ -1,4 +1,4 @@
-package edu.berkeley.cs.tedd.core;
+package edu.berkeley.cs.konkrit.core;
 
 /**
  * Copyright (c) 2006-2011,

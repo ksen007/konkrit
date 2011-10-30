@@ -1,4 +1,4 @@
-package edu.berkeley.cs.tedd.core;
+package edu.berkeley.cs.konkrit.core;
 
 import javax.swing.text.Document;
 import java.util.ArrayList;
